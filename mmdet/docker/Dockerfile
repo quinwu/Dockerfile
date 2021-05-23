@@ -80,7 +80,7 @@ RUN pip install jupyter
 RUN pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install --user
 
 # jupyter config
-# pwd = notebook
+# default password: notebook
 # default path: /app
 ARG pwd=sha1:8e41296bc947:602f563ad9c8a07d7aa5bda3e27ed8136aa39696
 RUN jupyter notebook --generate-config

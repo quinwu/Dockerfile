@@ -10,3 +10,14 @@
 ### build images
 
 `docker build .`
+
+### jupyter notebook
+
+- default password: `notebook`
+- default workspace: `\app`
+
+### run container
+
+`docker run -it -p 9986:8888 image /bin/bash`
+
+- Map TCP port 8888 in the container to port 9986 on the Docker host.
