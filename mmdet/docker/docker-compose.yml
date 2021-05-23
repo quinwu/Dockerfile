@@ -1,5 +1,0 @@
-version: '3'
-services: 
-    mmdetection:
-        build: .
-        image: "mmdetection-cuda10.2-torch1.8.0-mmcv1.3.4-mmdet2.12.0"

@@ -46,9 +46,9 @@ RUN curl -sLo ~/miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-py38
  && conda clean -ya
 
 # CUDA 10.2-specific steps
-# Install pytorch==1.8 and torchvision==0.9.0
+# Install pytorch==1.6 and torchvision==0.7.0
 RUN conda install -y -c conda-forge cudatoolkit=10.2 \
- && conda install -y -c pytorch pytorch==1.8.0 torchvision==0.9.0\
+ && conda install -y -c pytorch pytorch==1.6.0 torchvision==0.7.0\
  && conda clean -ya
 
 
@@ -59,8 +59,8 @@ RUN conda install -y -c conda-forge cudatoolkit=10.2 \
 # Install MMDetection #
 #######################
 
-# Install MMCV CUDA-10.2 PyTorch-1.8.0
-RUN pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu102/torch1.8.0/index.html
+# Install MMCV CUDA-10.2 PyTorch-1.6.0
+RUN pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu102/torch1.6.0/index.html
 
 # Clone the MMDetection repository
 RUN git clone https://github.com/open-mmlab/mmdetection.git
@@ -74,5 +74,22 @@ RUN pip install -v -e .
 
 WORKDIR /app
 
-# Set the default command to python3
-CMD ["python3"]
+# Install jupyter 
+
+RUN pip install jupyter
+RUN pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install --user
+
+# jupyter config
+# pwd = notebook
+# default path: /app
+ARG pwd=sha1:8e41296bc947:602f563ad9c8a07d7aa5bda3e27ed8136aa39696
+RUN jupyter notebook --generate-config
+RUN echo "c.NotebookApp.ip = '*'" >> /home/user/.jupyter/jupyter_notebook_config.py \
+ && echo "c.NotebookApp.open_browser = False" >> /home/user/.jupyter/jupyter_notebook_config.py \
+ && echo "c.NotebookApp.password = u'${pwd}'" >> /home/user/.jupyter/jupyter_notebook_config.py \
+ && echo "c.NotebookApp.port = 8888" >> /home/user/.jupyter/jupyter_notebook_config.py \
+ && echo "c.NotebookApp.allow_root = True" >> /home/user/.jupyter/jupyter_notebook_config.py \
+ && echo "c.ContentsManager.root_dir = '/app'" >> /home/user/.jupyter/jupyter_notebook_config.py
+
+# Set the default command 
+CMD ["jupyter","notebook"]
