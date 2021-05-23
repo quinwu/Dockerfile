@@ -9,7 +9,8 @@
 
 ### build images
 
-`docker build .`
+- `cd docker`
+- `docker build .`
 
 ### jupyter notebook
 
