@@ -89,3 +89,4 @@ docker run
 ### Reference
 
 - [https://denibertovic.com/posts/handling-permissions-with-docker-volumes/](https://denibertovic.com/posts/handling-permissions-with-docker-volumes/)
+- [https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#entrypoint](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#entrypoint)
