@@ -86,3 +86,6 @@ docker run
     -e LOCAL_USER_ID=`id -u $USER`  \ 
     -itd mmdetection-cuda10.2-torch1.6.0-mmcv1.3.4-mmdet2.12.0:v1.5   
 ```
+### Reference
+
+- [https://denibertovic.com/posts/handling-permissions-with-docker-volumes/](https://denibertovic.com/posts/handling-permissions-with-docker-volumes/)
