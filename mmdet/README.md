@@ -1,7 +1,7 @@
 
 # MMDetection Dockerfile README
 
-## MMDetection version
+### MMDetection version
 
 - cuda:10.2
 - pytorch:1.6.0
@@ -9,7 +9,7 @@
 - mmcv:1.3.4
 - mmdet:2.12.0
 
-## File Information
+### File Information
 
 - docker-entrypoint.sh
 
@@ -58,7 +58,7 @@
     - default workspace: `\app`
 
 
-## How to build image
+### How to build image
 
 ```bash 
 cd docker
@@ -69,7 +69,7 @@ docker build -t mmdetection-cuda10.2-torch1.6.0-mmcv1.3.4-mmdet2.12.0:v1.5 .
 ```
 
 
-## How to run container
+### How to run container
 
 ```bash
 docker run 
